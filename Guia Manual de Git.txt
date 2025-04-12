@@ -70,7 +70,7 @@
 	Nombre que comunmente le asignamos al repositorio remoto que clonamos.
 
 	RAMA (BRANCH)
-	Una rama en Git es una linea independiente de desarrollo en el repositorio.
+	Es una linea independiente de desarrollo en el repositorio.
 
 	GIT PUSH
 	Comando usado para enviar los cambios realizados en un repositorio local a un repositorio remoto para que ambos tengan la misma informacion.
@@ -79,7 +79,7 @@
 	Comando usado para descargar el contenido de un repositorio remoto e inmediatamente actualizar el repositorio local para que ambos tengan la misma informacion.
 
 	GIT FETCH
-	Comando usando para verificar los cambios realizados en el repositorio remoto sin combinar esos cambios con el repositorio local.
+	Comando usado para verificar los cambios realizados en el repositorio remoto sin combinar esos cambios con el repositorio local.
 	Te permite saber si se han realizados cambios en el repositorio remoto desde la ultima vez que actualizaste tu repositorio local con git pull.
 
 	BIFURCAR UN REPOSITORIO
@@ -95,10 +95,10 @@
 
 <!--
 	DESCARGAR GIT PARA WINDOWS:
-		- Pagina oficial: https://git-scm.com/
+		- Pagina oficial: https://git-scm.com/downloads
 		- Ubicarse en la imagen de PC, click en el boton 'Download for Windows', te llevara a otra pagina.
 		- Clic en: 'Click here to download', comenzara la descarga.
-	
+
 	INSTALAR:
 		- Doble click en el archivo descargado.
 		- Click en el boton 'Next', para aceptar la licencia.
@@ -120,8 +120,15 @@
 		- Marcar las dos casillas: 'Launch Git Bash', y 'View Release Notes', click en el boton 'Finish'.
 	
 	EMPEZAR A USAR GIT BASH
-		- En el buscado de Windows, escribir Git, hasta que aparezca 'Git Bash'.
+		- En el buscador de Windows, escribir Git, hasta que aparezca 'Git Bash'.
 		- Para hacer mas grande la letra, con CTRL + MOUSE.
+-->
+
+
+<!--
+	DESCARGAR GITHUB DESKTOP:
+		- Pagina oficial: desktop.github.com
+		- Clic en el boton: 'Download for Windows (64bit)'
 -->
 
 
@@ -173,7 +180,7 @@
 
 
 <!--
-	Para ver la version de Git Bash - Las dos opciones es igual
+	Para ver la version de Git Bash - Las dos opciones es igual:
 		git --version
 		git -v
 -->
@@ -188,28 +195,29 @@
 
 
 <!--
-	Antes de comenzar a usar Git, es recomendable que hagas una mínima configuración.
+	Antes de comenzar a usar Git, es recomendable hacer una mínima configuración.
 	
-	
-	Configurar el nombre en modo global. El global es para todos los proyectos/repositorios. El nombre es para que se muestre en los commit o en nuestro cambios
-		git config --global user.name "Victor Rivera"
+		Configurar/Cambiar el nombre en modo global. El global es para todos los proyectos/repositorios. El nombre es para que se muestre en los commit o en nuestro cambios
+			git config --global user.name "Victor Rivera"
 
-	Configurar el nombre solo para un repositorio, no global
-		git config user.name "Victor Rivera"
+		Configurar/Cambiar el nombre solo para un repositorio, no global. Dos opciones:
+			git config --local user.name "Victor Rivera"
+			git config user.name "Victor Rivera"
 
-	Consultar el nombre que se registro/asigno
-		git config user.name
+		Consultar el nombre que se registro/asigno
+			git config user.name
 
 
 
-	Configurar/Asignar el correo para todos los repositorios
-		git config --global user.email "libreriadevictor@gmail.com"
+		Configurar/Asignar el correo para todos los repositorios
+			git config --global user.email "libreriadevictor@gmail.com"
 
-	Configurar/Asignar el correo para un solo repositorio-->
-		git config user.email "libreriadevictor@gmail.com"
+		Configurar/Asignar el correo para un solo repositorio. Dos opciones:
+			git config --local user.email "libreriadevictor@gmail.com"
+			git config user.email "libreriadevictor@gmail.com"
 
-	Consultar el email que esta registrado en los repositorios
-		git config user.email
+		Consultar el email que esta registrado en los repositorios
+			git config user.email
 -->
 
 
@@ -231,11 +239,18 @@
 
 <!--
 	Revisar qué configuración estás utilizando actualmente:
-		git config --list				-> Para mostrar todas las opciones
-		git config --global --list		-> Para mostrar sólo la configuración global
-		git config --local --list		-> Para mostrar la configuración del repositorio local (si existe)
+		git config						-> Muestra todas las opciones del sistema que podemos utilizar
+
 		git config --system --list		-> Muestra la configuración del git del sistema (si existe)
-	
+
+		git config --list				-> Para mostrar todas las opciones
+
+		git config --global --list		-> Muestrar sólo la configuración global
+		git config --list --global		-> Muestrar sólo la configuración global
+
+		git config --local --list		-> Muestrar la configuración del repositorio local (si existe)
+		git config --list --local		-> Muestrar la configuración del repositorio local (si existe)
+
 	Alternativamente, puedes usar el parámetro --show-scope para saber de dónde proviene cada configuración:
 		git config --list --show-scope
 
@@ -260,12 +275,13 @@
 
 
 <!--
-	Para crear/iniciar el proyecto/repositorio. Se creara una carpeta oculta con el nombre de .git
-		git init 			->
+	Para crear/iniciar el proyecto/repositorio vacio.
+	Escribir en la termina:
+		git init 			-> (Se creara una carpeta oculta con el nombre de .git)
 		git init .			-> Tambien se crea utilizando el punto
 		git init --bare		-> Para iniciar el proyecto/repositorio desde un servidor
 	
-	Para crear/iniciar el proyecto/repositorio. Podemos crear la carpeta principal en conjunto
+	Para crear/iniciar el proyecto/repositorio y de paso podemos crear la carpeta principal en conjunto
 		git init nombre_carpeta_proyecto
 		cd nombre_carpeta_proyecto
 -->
@@ -303,7 +319,7 @@
 <!--
 	Nos permite borrar todos los archivos que todavía no han sido rastreados por Git.
 		git clean
-	
+
 	Lo que nos ofrecen las opciones:
 		-n para ejecutar un dry-run. Esto hará que se ejecute el comando y te diga cuál sería el resultado de borrar los archivos... ¡sin borrarlos!
 		-f forzar el borrado de los archivos.
@@ -316,7 +332,7 @@
 	Agregamos archivo/s al proceso de preparacion para hacer commit. Añadir al área de staging.
 	De la misma manera se hace con archivos que se modifican que ya se hicieron COMMIT anteriormente
 		git add nombreArchivo.txt							-> Agregar un archivo
-		git add nombreArchivo1.txt nombreArchivo2.txt		-> Agregar varios archivos
+		git add nombreArchivo1.txt nombreArchivo2.txt		-> Agregar varios archivos seleccionados
 		git add *.txt										-> Agregar varios archivos indicando la extension del documento
 		git add .											-> Agrega todos los archivo indicando el punto como extension
 
@@ -328,8 +344,8 @@
 	Quita el archivo del seguimiento de Git. Realiza un reverso del git add.
 	De esta forma, ese fichero se eliminará del repositorio, se añadirá al historial de cambios, pero no se borrará del directorio de trabajo.
 		git rm --cached 'nombreArchivo.txt'
-	
-	
+
+
 	Borrar una carpeta y todos los ficheros que lo contiene, puedes utilizar el comando.
 	La -r indica que se borrará la carpeta y todos sus ficheros de forma recursiva.
 		git rm -r
@@ -338,7 +354,6 @@
 
 <!--
 	¿QUE ES UN COMMIT?
-	Componente basico de la linea del tiempo de un proyecto de Git.
 	Es un registro o foto del estado de un proyecto en un momento especifico.
 	Registra los cambios que se realizaron en los archivos en comparacion con la version anterior.
 
@@ -346,15 +361,15 @@
 
 	Hacer un COMMIT:
 		git commit -m "Frase relacionada con el cambio guardado"
-		git commit -m 'Mi primer commit' -m 'Creando pagina web'	-> Podemos usar mas de un -m
+		git commit -m 'Mi primer commit' -m 'Creando pagina web'	-> Podemos usar mas de un mensaje -m
 		git commit					-> Se mostrara la ventana de VSC y ahi escribimos la frase relacionada con el cambio a guardar y despues guardamos y cerrar.
 		git commit -a				-> Es para guardar y colocar un mensaje relacionado al cambio. Se abrira el editor de texto para guardar el mensaje del cambio.
 		git commit --all
 	Dos opciones pero se usa la segunda:
 	Esto sólo funciona para archivos modificados.
 	Si es la primera vez que los has creado, vas a tener que añadirlos manualmente al área de staging con git add antes de poder usar git commit.
-		git commit -a -m			-> "Mensaje de cambios o comentario" -> Agregar, pasar al commit, e insertar el comentario
-		git commit -am
+		git commit -a -m "Mensaje de cambios o comentario"		-> Agregar, pasar al commit, e insertar el comentario
+		git commit -am "Mensaje de cambios o comentario"		-> Agregar, pasar al commit, e insertar el comentario
 -->
 
 
@@ -437,6 +452,7 @@ git status -s
 <!--
 	Podemos ver con detalle el ultimo commit realizado.
 		git diff
+		git diff --staged
 	
 	Para salir de la pantalla de muestra, presionamos la letra Q
 -->
@@ -449,14 +465,10 @@ git status -s
 		git log -p -1			-> Muestra el ultimo detalle
 		git log -p -2			-> Muestra los dos ultimos detalles
 		git log --graph			-> Muestra el historial de los cambios guardados pero tipo rama. Muestra 4 puntos -> El codigo del commit, autor (usuario y correo), fecha completa, mensaje.
-		git log --graph --pretty=oneline				-> Muestra el codigo del commit y el mensaje en una linea.
-		git log --graph --decorate --all --one			-> Muestra un resumen del codigo del commit y el mensaje en una linea.
 		git log --stat			-> Muestra un resumen de los cambio en el archivo
 		git log --oneline		-> Muestra en una linea toda la informacion del COMMIT
 		git log --pretty=oneline						-> Muestra en una linea
 		git log --pretty=format:"%H - %an - %ad - %s"	->Consulta en https://git-scm.com/book/es/v2/Fundamentos-de-Git-Ver-el-Historial-de-Confirmaciones
-	
-	Para salir de la pantalla con la letra Q
 -->
 
 
@@ -473,10 +485,8 @@ git status -s
 	Editar el ultimo comentario/mensaje del commit. Es aconsejable solo cambiar en el repositorio local y no en el global.
 	Es muy útil pero sólo funciona con el último commit y siempre y cuando NO esté publicado en el repositorio remoto.
 	Dos opciones. La ultima es la mas usada:
-		git commit --amend
+		git commit --amend			-> (Se abrira el editor para editar el comentario)
 		git commit --amend -m 'Aqui va el nuevo mensaje'
-	
-	Se abrira el editor para editar el comentario
 -->
 
 
@@ -487,7 +497,7 @@ git status -s
 	Elimina/retroceder un commit. Si elimina el cambio del archivo, y elimina/retrocede el commit
 		git reset --hard HEAD~1
 
-	Elimina/Retrocede al commit que uno desea y se combierte en HEAD, para eso necesitamos el numero del id_commit, podemos consultar con el git log --online
+	Elimina/retrocede al commit que uno desea y se combierte en HEAD, para eso necesitamos el numero del id_commit, podemos consultar con el git log --online
 		git reset --hart aqui_id_commit
 
 	Ver todos los COMMITs
@@ -501,6 +511,10 @@ git status -s
 
 
 <!--
+	Consultar commits anteriores. Vemos lo que teniamos en ese commit:
+		git log --online						-> Consultar el historial de los commits
+		git checkout num_id_commit
+
 	Elimina el ultimo commit. Los datos del documento regresan a como estaban antes.
 		git checkout -- nombreArchivo.txt
 		git checkout -- '*.md'					-> restaurar todos los archivos markdown
@@ -510,11 +524,14 @@ git status -s
 
 <!--
 	Agregar etiquetas a los cambios.
-	Agregar version de terminado de un proyecto.
+	Agregar version de terminado de un proyecto o despues de hacer un commit.
 	Desde la carpeta principal local, usando la terminal, escribir:
 		git tag 15-09-24v1 -m "Version 1 del proyecto"	-> Ejemplo etiquetado
 		git tag nombre_etiqueta							-> Primera opcion
 		git tag -a v1.0 -m "Mi primera version con git"	-> Segunda opcion
+		git tag -a "v2.0" aqui_numero_commit			-> Tercera opcion
+			Se abrira un ventana. Escribir abajo ':wq' y 'enter'. (Sin las comillas)
+			Con git log consultamos las etiquetas
 		
 		git tab											-> Consultar la version
 		
@@ -542,9 +559,12 @@ git log -> Para verificar que este asignada la etiqueta
 
 
 
-<!--Ver lista de las versiones de las etiquetas-->
-git tag
-git show nombreEtiqueta -> Vemos el detalle que tiene la etiqueta 
+<!--
+	Ver lista de las versiones de las etiquetas:
+		git tag
+		git show nombreEtiqueta -> Vemos el detalle que tiene la etiqueta
+-->
+ 
 
 
 <!--
@@ -565,6 +585,7 @@ git show nombreEtiqueta -> Vemos el detalle que tiene la etiqueta
 <!--
 	Consultar la lista de ramas y la que esta con asterisco es la que esta actualmente
 		git branch 						->
+		git branch -l					-> Muestra el nombre de la rama en la que estamos, pero con el *
 		git branch --show-current		-> Muestra el nombre de la rama en la que estamos, pero sin el asterisco
 		
 	Solo crea una rama:
@@ -583,7 +604,7 @@ git show nombreEtiqueta -> Vemos el detalle que tiene la etiqueta
 		git branch -m nuevo-nombre-rama	-> Cambiar el nombre (renombrar) a la rama. Debemos estar en rama que vamos a cambiar el nombre
 		git branch -m antiguo-nombre-rama' 'nuevo-nombre-rama		-> Cambiar el nombre a la rama. Debemos estar en rama main/principal
 
-	ELIMINAR UNA RAMA EN EL REPOSITORIO LOCAL DE GIT
+	Eliminar una rama en el repositorio local de Git
 	Debemos estar en la rama principal main o master
 		git branch -d nombre-rama-secundaria	-> Debemos estar en la rama main/principal
 		git log --oneline						-> Para consultar los commits realizados
@@ -665,7 +686,7 @@ cat nombreArchivo.txt
 				https://github.com/rivera-vict/prueba_codigo.git
 				(rivera-vict, es el nombre del usuario, y prueba_codigo.git, es el nombre del repositorio)
 		Despues de modificar los archivos:
-			No ubicamos dentro de la carpeta del nombre del repositorio y escribimos:
+			Nos ubicamos dentro de la carpeta del nombre del repositorio y escribimos:
 				- git add .
 				- git commit -m 'detalle referencial al cambio'
 				- git push origin main
@@ -708,8 +729,13 @@ cat nombreArchivo.txt
 	Realizar un commit temporal solo en la rama local que se trabaja, para trabajar con otra rama
 	Digitamos las dos lineas por separado:
 		git stash
-		git stash list
+		git stash list				-> Visualizamos las listas de stash creadas
 		git switch nombre_rama_cambiar
+
+		git stash apply				-> Regresamos a la rama que teniamos pendiente el trabajo
+		git stash clear				-> Elimina/Limpia el estado pendiente del trabajo. Se aplica despues de apply
+
+		git stash pop				-> Elimina el primer en la fila. Se aplica en vez de apply y clear
 -->
 
 REFERENCIAS:
