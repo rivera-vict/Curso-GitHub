@@ -74,13 +74,25 @@
 
 	GIT PUSH
 	Comando usado para enviar los cambios realizados en un repositorio local a un repositorio remoto para que ambos tengan la misma informacion.
-
-	GIT PULL
-	Comando usado para descargar el contenido de un repositorio remoto e inmediatamente actualizar el repositorio local para que ambos tengan la misma informacion.
+	Luego de hacer git add y git commit debemos ejecutar este comando para mandar los cambios de nuestro proyecto local, al servidor remoto.
+	Sintaxis: git push nombre-remoto nombre-rama
+		Envía los cambios de nuestro Local Repository al repositorio remoto llamado "nombre-remoto" y la rama "nombre-rama"
 
 	GIT FETCH
 	Comando usado para verificar los cambios realizados en el repositorio remoto sin combinar esos cambios con el repositorio local.
 	Te permite saber si se han realizados cambios en el repositorio remoto desde la ultima vez que actualizaste tu repositorio local con git pull.
+
+	git fetch nombre-rama
+	#Trae los cambios del repositorio remoto, crea la rama y los deja en esta. Luego debemos fusionar con otra rama de nuestro proyecto.
+
+	GIT MERGE
+	Este comando se ejecuta para combinar los últimos cambios traídos del servidor remoto (con git fetch), y nuestro Working Directory
+
+	GIT PULL
+	Comando usado para descargar el contenido de un repositorio remoto e inmediatamente actualizar el repositorio local para que ambos tengan la misma informacion.
+	Este comando se emplea para extraer y descargar contenido desde un repositorio remoto y actualizar al instante el proyecto local para reflejar ese contenido. Básicamente, git fetch y git merge  al mismo tiempo.
+	Sintaxis: git pull nombre-remoto nombre-rama  
+		Trae los cambios del repositorio remoto llamado "nombreremoto" y los fusiona con la rama "nombrerama"
 
 	BIFURCAR UN REPOSITORIO
 	Crea una copia del repositorio remoto en tu cuenta de GitHub
@@ -317,6 +329,15 @@
 
 
 <!--
+	Permite ver el ultimo commit y los cambios realizados en el archivo:
+		git show
+	
+	Permite ver el ultimo commit de un archivo en especifico:
+		git show 'nombre_archivo'
+-->
+
+
+<!--
 	Nos permite borrar todos los archivos que todavía no han sido rastreados por Git.
 		git clean
 
@@ -450,8 +471,10 @@ git status -s
 
 
 <!--
+	Permite comparar los cambios realizados y enviados en dos determinados commit, para esto se debe copiar la llave o indicador de cada commit
+		git diff [commit vers 1] [commit vers 2]
+
 	Podemos ver con detalle el ultimo commit realizado.
-		git diff
 		git diff --staged
 	
 	Para salir de la pantalla de muestra, presionamos la letra Q
@@ -465,10 +488,11 @@ git status -s
 		git log -p -1			-> Muestra el ultimo detalle
 		git log -p -2			-> Muestra los dos ultimos detalles
 		git log --graph			-> Muestra el historial de los cambios guardados pero tipo rama. Muestra 4 puntos -> El codigo del commit, autor (usuario y correo), fecha completa, mensaje.
-		git log --stat			-> Muestra un resumen de los cambio en el archivo
+		git log --stat			-> Permite ver los cambios específicos que se hicieron, en cuales archivos, por cada commit.
 		git log --oneline		-> Muestra en una linea toda la informacion del COMMIT
 		git log --pretty=oneline						-> Muestra en una linea
 		git log --pretty=format:"%H - %an - %ad - %s"	->Consulta en https://git-scm.com/book/es/v2/Fundamentos-de-Git-Ver-el-Historial-de-Confirmaciones
+		git log 'nombre_archivo.txt'	-> Muestra el historial de los commits de un archivo en especifico
 -->
 
 
@@ -491,6 +515,18 @@ git status -s
 
 
 <!--
+	git reset		-> Permite volver a una versión anterior, sin poder volver al estado anterior pero tiene dos atributos principales
+		--hard		-> Permite restablecer al estado anterior, todo vuelve como estaba. Es el más peligroso porque borra todo y no mantiene nada.
+		--soft		-> Permite restablecer al estado anterior, pero mantiene en staging los commits "eliminados". Es decir, el directorio de trabajo vuelve a la versión del commit seleccionado.
+		--mixed		-> Permite restablecer al estado anterior, pero mantiene en Working Directory los commits "eliminados". Es decir, el directorio de trabajo se restablece, pero deja en el directorio local los cambios realizados posterior al commit seleccionado.
+
+		Sintaxis:
+		git reset [Hash del commit] --hard/soft/mixxed
+
+
+	Regresar el estado de actualizado a NO actualizado
+		git reset HEAD nombreArchivo.txt
+
 	Elimina/retroceder un commit. No elimina el cambio del archivo, solo elimina/retrocede el commit
 		git reset --soft HEAD~1		-> El 1 significa el ultimo commit
 
@@ -505,12 +541,13 @@ git status -s
 -->
 
 
-<!--Regresar el estado de actualizado a NO actualizado
-		git reset HEAD nombreArchivo.txt
--->
-
-
 <!--
+	Permite ver a la versión master del archivo, es decir la ultima versión que se había enviado en el ultimo commit.
+		git checkout master
+	Sintaxis:
+		git checkout master archivo.txt
+
+
 	Consultar commits anteriores. Vemos lo que teniamos en ese commit:
 		git log --online						-> Consultar el historial de los commits
 		git checkout num_id_commit
